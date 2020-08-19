@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div class="form-group">
+        <label for="title">
+            <b>Title</b>
+        </label>
+        <input required value="<%= paper.title %>" type="text" name="title" id="title" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label for="author">
+            <b>Author</b>
+        </label>
+        <input required value="<%= user.name %>" type="text" name="author" id="author" class="form-control" readonly>
+        <input required value="<%= user._id %>" type="hidden" name="userID" id="userID" class="form-control">
+    </div>
+    
+    <div class="form-group">
+        <label for="session">
+            <b>Session</b>
+        </label>
+        <div class="input-group mb-3">
+            <select required  id="session" name="session"  class="form-control">
+                <option value="Summer-2020">Summer-2020</option>
+                <option value="Spring-2020">Spring-2020</option>
+                <option value="Fall-2019">Fall-2019</option>
+                <option value="Fall-2019">Summer-2019</option>
+            </select>
+        </div>
+        <label for="categories">
+            <b>Categories</b>
+        </label>
+        <div class="input-group mb-3">
+            <select required  id="categories" name="categories"  class="form-control">
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Blockchain">Blockchain</option>
+                <option value="Crypto Currency">Crypto Currency</option>
+                <option value="Big Data">Big Data</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Computer Architecture">Computer Architecture</option>
+                <option value="Data Mining">Data Mining</option>
+                <option value="Data Management and Visualization">Data Management and Visualization</option>
+                <option value="Human Computer Interaction">Human Computer Interaction</option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
+        <label for="status">
+            <b>Status</b>
+        </label>
+        <div class="input-group mb-3">
+            <select required  id="status" name="status"  class="form-control">
+                <option  value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="abstract"><b>Abstract</b></label>
+        <textarea required name="abstract" id="abstract" class="form-control"><%= paper.abstract %></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="linkpdf"><b>Publication Link (please upload the file to Google drive & give link here)</b> </label>
+        <textarea required name="linkpdf" id="linkpdf" class="form-control"><%= paper.linkpdf %></textarea>
+    </div>
+    <center>
+        <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </center>
+</body>
+</html>

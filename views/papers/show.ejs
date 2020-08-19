@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thesis archiver Forum</title>
+    <style>
+               .containe{
+            padding-top: 70px;
+            padding-right: 350px;
+            padding-left:350px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../_header.ejs') %>
+    <div class="containe">
+        <div class="card mt-4">
+            <div class="card-body">
+                <br>
+                <div class="card-text mb-2"><b>Tittle : </b><%= paper.title%></div>
+                <div class="text-muted mb-2">
+                    <b>Upload Time :</b> <%= paper.createdAt.toLocaleString()%>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Session :</b> <%= paper.session%>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Categories:</b> <%= paper.categories%>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Author :</b> <%= paper.author%>
+                </div>
+                <br>
+                <i class="fa fa-quote-left fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
+                <div class="card-text mb-2"><b>Abstract: </b><%= paper.abstract %></div>
+                <br>
+                <br>
+                <br>
+                <center>
+                    <a href="/dashboard" class="btn btn-secondary">All papers</a>
+                    <% if(user._id == paper.userID) { %>
+                    <a href="/papers/edit/<%= paper.id %>" class="btn btn-info">Edit</a>
+                    <% } %>
+                </center>
+                <br>
+                <div>
+                    <%
+                    let regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+                    if (regexp.test(paper.linkpdf)) { %>
+                    <center>
+                        <form action="<%= paper.linkpdf %>">
+                            <button type="submit" class="btn btn-outline-success">Download & View the
+                                Publication</button>
+                        </form>
+                    </center>
+                    <% } else  { %>
+                    <center>
+                        <form action="#">
+                            <button type="submit" class="btn btn-outline-success">Request For the Publication</button>
+                        </form>
+                    </center>
+                    <%  } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

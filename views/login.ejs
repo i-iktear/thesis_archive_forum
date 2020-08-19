@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i> Login</h1>
+        <%-include ('./partials/messages') %>
+        <form action="/users/login" method="POST">
+          <div class="form-group">
+            <label for="email"><b>Email</b></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+          </div>
+          <div class="form-group">
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+          </div>
+          <br>
+          <div class="form-check">
+            <input required type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1"><b>I Agreed to "Thesis Archiver Forum" terms and
+                conditions.</b></label>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="row mt-4">
+          <b> &nbsp &nbsp No Account? &nbsp</b> <a href="/users/register"> Register</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

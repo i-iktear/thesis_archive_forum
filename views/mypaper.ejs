@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Thesis archiver Forum</title>
+    <style>
+        .containe{
+            padding-top: 70px;
+            padding-right: 150px;
+            padding-left:150px;
+        }
+    </style>
+    
+</head>
+<body>
+        <%- include('_header') %>
+    <div class="containe">
+        <% papers.forEach(paper => { %>
+            <% if(user._id == paper.userID) { %>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title"><%= paper.title %></h4>
+                <br>
+                <div class="card-subtitle text-muted mb-2">
+                    <b>Upload : </b> <%= paper.createdAt.toLocaleString() %>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Author :</b> <%= paper.author%>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Categories :</b> <%= paper.categories%>
+                </div>
+                <div class="text-muted mb-2">
+                    <b>Status :</b> <%= paper.status%>
+                </div>
+                <br>
+                <!-- <div class="card-text mb-2"><%= paper.description %></div> -->
+                <a href="papers/mypapers/<%= paper.slug %>" class="btn btn-primary">Read More</a>
+                <form action="/papers/mypapers/<%= paper.id %>?_method=DELETE" method="post" class="d-inline">
+                    <button type="=submit" class="btn btn-danger"> <i class="fa fa-trash-o fa-lg"></i> Delete</button>
+                    <a href="/papers/edit/<%= paper.id %>" class="btn btn-success">Edit</a>
+                </form>
+            </div>
+        </div>
+        <% } %>
+        <% }) %>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- include('footer') %>
+    
+</body>
+</html>
